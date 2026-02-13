@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Baby Store - Premium Baby Essentials</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID_HERE');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" 
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+    </noscript>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Bespoke Baby Store</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Let us grow<br>your Baby</h1>
+            <p class="hero-subtitle">Premium baby bottles and accessories designed with love and care for your little one's comfort and health.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Shop Now</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop" alt="Baby products">
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Discover our most popular baby essentials</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" data-product="Premium Baby Bottle" data-price="25">
+                    <div class="product-image">
+                        <img src="https://www.chiccousa.com/dw/image/v2/BLNH_PRD/on/demandware.static/-/Sites-chicco_catalog/default/dw39f8a5f8/images/products/feeding/duo-bottle/chicco-duo-bottle-5oz-single.jpg?sw=660" alt="Premium Baby Bottle">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Baby Bottle</h3>
+                        <p class="product-description">Anti-colic, BPA-free, 250ml</p>
+                        <div class="product-footer">
+                            <span class="price">$25.00</span>
+                            <button class="btn-add-cart" onclick="addToCart('Premium Baby Bottle', 25)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product="Baby Pacifier Set" data-price="15">
+                    <div class="product-image">
+                        <img src="https://moonkieshop.com/cdn/shop/files/baby_pacifier_set_pinkpalemauve.jpg?v=1770620806&width=3264" alt="Baby Pacifier Set">
+                    </div>
+                    <div class="product-info">
+                        <h3>Baby Pacifier Set</h3>
+                        <p class="product-description">Orthodontic, 0-6 months, 2 pack</p>
+                        <div class="product-footer">
+                            <span class="price">$15.00</span>
+                            <button class="btn-add-cart" onclick="addToCart('Baby Pacifier Set', 15)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product="Bottle Warmer" data-price="45">
+                    <div class="product-image">
+                        <img src="https://www.chiccousa.com/on/demandware.static/-/Sites-chicco_catalog/default/dw2d47a2ec/images/products/feeding/sterilizers/chicco-digital-bottle-warmer-sterilizer.jpg" alt="Bottle Warmer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Digital Bottle Warmer</h3>
+                        <p class="product-description">Fast warming, sterilizer function</p>
+                        <div class="product-footer">
+                            <span class="price">$45.00</span>
+                            <button class="btn-add-cart" onclick="addToCart('Digital Bottle Warmer', 45)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product="Organic Cotton Onesie" data-price="18">
+                    <div class="product-image">
+                        <img src="https://www.bellacanvas.com/bella/product/hires/100B00.jpg" alt="Organic Cotton Onesie">
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Cotton Onesie</h3>
+                        <p class="product-description">Soft, breathable, 0-3 months</p>
+                        <div class="product-footer">
+                            <span class="price">$18.00</span>
+                            <button class="btn-add-cart" onclick="addToCart('Organic Cotton Onesie', 18)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-outline">View All Products →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Find the perfect products for your baby</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" onclick="trackCategoryClick('Feeding')">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                    </div>
+                    <h3>Feeding</h3>
+                    <p>Bottles, breast pumps & more</p>
+                </div>
+                <div class="category-card" onclick="trackCategoryClick('Clothing')">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.4a1.6 1.6 0 0 0-2.24 0l-6.84 6.84-2.23-2.23a1.6 1.6 0 0 0-2.24 0L3.4 11.62a1.6 1.6 0 0 0 0 2.24l6.84 6.84a1.6 1.6 0 0 0 2.24 0l8.9-8.9a1.6 1.6 0 0 0 0-2.24Z"></path></svg>
+                    </div>
+                    <h3>Clothing</h3>
+                    <p>Organic cotton essentials</p>
+                </div>
+                <div class="category-card" onclick="trackCategoryClick('Care')">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                    </div>
+                    <h3>Care</h3>
+                    <p>Skincare & hygiene</p>
+                </div>
+                <div class="category-card" onclick="trackCategoryClick('Accessories')">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                    </div>
+                    <h3>Accessories</h3>
+                    <p>Pacifiers, toys & more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="about" class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Bespoke Baby Store?</h2>
+                <p>We prioritize quality, safety, and comfort for your little ones</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" onclick="trackFeatureClick('safe_materials')">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                    </div>
+                    <h3>Safe Materials</h3>
+                    <p>All our products are made from BPA-free, food-grade materials</p>
+                </div>
+                <div class="feature-card" onclick="trackFeatureClick('quality_guaranteed')">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                    </div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Durable products designed to last through your baby's growth</p>
+                </div>
+                <div class="feature-card" onclick="trackFeatureClick('expert_support')">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Expert Support</h3>
+                    <p>Our team is always ready to help with your questions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by parents across Uganda</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&auto=format&fit=crop" alt="Sarah M.">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"The bottles from Bespoke Baby Store are amazing! My baby loves them and they're so easy to clean."</p>
+                        <h4>Sarah M.</h4>
+                        <span class="role">First-time mom</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop" alt="David K.">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"The quality of the baby clothes is exceptional. They've survived countless washes and still look great!"</p>
+                        <h4>David K.</h4>
+                        <span class="role">Father of two</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop" alt="Kyisakye B.">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"I love the bottle warmer! It's been a lifesaver for late-night feedings with my twins."</p>
+                        <h4>Kyisakye B.</h4>
+                        <span class="role">Mother of twins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Join Our Community</h2>
+                <p>Subscribe for parenting tips, exclusive offers, and new product alerts.</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Bespoke Baby Store</h3>
+                    <p>Premium baby essentials for your little ones. Quality, safety, and comfort in every product.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: hello@bespokebabystore.com</p>
+                    <p>Phone: +256 700 123 456</p>
+                    <p>Kampala, Uganda</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bespoke Baby Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0</span></strong>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+          </html>
+                      
