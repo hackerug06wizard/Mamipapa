@@ -18,6 +18,52 @@
         fbq('init', '2621239424886813');
         fbq('track', 'PageView');
     </script>
+    <style>
+        .category-filter {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            padding: 20px 0;
+        }
+        
+        .category-btn {
+            padding: 14px 32px;
+            border: 2px solid #8BC34A;
+            background: transparent;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: #8BC34A;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 195, 74, 0.3);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card.hidden {
+            display: none;
+        }
+        
+        .category-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -58,336 +104,721 @@
 
     <section class="categories-page">
         <div class="container">
-            <div class="category-block" id="feeding">
-                <h2><span class="text-lemon">Feeding</span></h2>
-                <div class="products-grid small">
-                    <div class="product-card">
-                        <img src="https://www.chiccousa.com/dw/image/v2/BLNH_PRD/on/demandware.static/-/Sites-chicco_catalog/default/dw39f8a5f8/images/products/feeding/duo-bottle/chicco-duo-bottle-5oz-single.jpg?sw=660" alt="Bottle" class="product-img">
-                        <div class="product-info">
-                            <h3>Premium Baby Bottle</h3>
-                            <p class="price">UGX 25,000</p>
-                            <button class="btn btn-primary" onclick="addToCart(1, 'Premium Baby Bottle', 25000, 'https://www.chiccousa.com/dw/image/v2/BLNH_PRD/on/demandware.static/-/Sites-chicco_catalog/default/dw39f8a5f8/images/products/feeding/duo-bottle/chicco-duo-bottle-5oz-single.jpg?sw=660')">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://www.chiccousa.com/on/demandware.static/-/Sites-chicco_catalog/default/dw2d47a2ec/images/products/feeding/sterilizers/chicco-digital-bottle-warmer-sterilizer.jpg" alt="Warmer" class="product-img">
-                        <div class="product-info">
-                            <h3>Bottle Warmer</h3>
-                            <p class="price">UGX 45,000</p>
-                            <button class="btn btn-primary" onclick="addToCart(3, 'Bottle Warmer', 45000, 'https://www.chiccousa.com/on/demandware.static/-/Sites-chicco_catalog/default/dw2d47a2ec/images/products/feeding/sterilizers/chicco-digital-bottle-warmer-sterilizer.jpg')">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Category Filter Buttons -->
+            <div class="category-filter">
+                <button class="category-btn active" onclick="filterProducts('all', this)">All Products</button>
+                <button class="category-btn" onclick="filterProducts('feeding', this)">Feeding</button>
+                <button class="category-btn" onclick="filterProducts('clothing', this)">Clothing</button>
             </div>
 
-            <div class="category-block" id="clothing">
-                <h2><span class="text-lemon">Clothing</span></h2>
-                <div class="products-grid small">
-                    <div class="product-card">
-                        <img src="https://www.bellacanvas.com/bella/product/hires/100B00.jpg" alt="Onesie" class="product-img">
-                        <div class="product-info">
-                            <h3>Organic Onesie</h3>
-                            <p class="price">UGX 18,000</p>
-                            <button class="btn btn-primary" onclick="addToCart(4, 'Organic Onesie', 18000, 'https://www.bellacanvas.com/bella/product/hires/100B00.jpg')">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://freerangestock.com/sample/167575/baby-clothing-and-accessories-flat-lay.jpg" alt="Blanket" class="product-img">
-                        <div class="product-info">
-                            <h3>Soft Blanket</h3>
-                            <p class="price">UGX 35,000</p>
-                            <button class="btn btn-primary" onclick="addToCart(6, 'Soft Baby Blanket', 35000, 'https://freerangestock.com/sample/167575/baby-clothing-and-accessories-flat-lay.jpg')">Add to Cart</button>
-                        </div>
-                </div>
-                 <div class="product-card">
-                    <img src="boot.jpg" alt="Onesie" class="product-img">
+            <div id="categoryDisplayTitle" class="category-title">
+                <h2><span class="text-lemon">All</span> Products</h2>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- FEEDING CATEGORY PRODUCTS -->
+                <div class="product-card" data-category="feeding">
+                    <img src="https://www.chiccousa.com/dw/image/v2/BLNH_PRD/on/demandware.static/-/Sites-chicco_catalog/default/dw39f8a5f8/images/products/feeding/duo-bottle/chicco-duo-bottle-5oz-single.jpg?sw=660" alt="Bottle" class="product-img">
                     <div class="product-info">
-                        <h3>Girls boot cuts</h3>
-                        <p> 4yrs</p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(4, 'Organic Onesie', 18000, 'https://www.bellacanvas.com/bella/product/hires/100B00.jpg')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="sweater.jpg" alt="Onesie" class="product-img">
-                    <div class="product-info">
-                        <h3>Pink sweater</h3>
+                        <h3>Premium Baby Bottle</h3>
                         <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(4, 'Organic Onesie', 18000, 'https://www.bellacanvas.com/bella/product/hires/100B00.jpg')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(1, 'Premium Baby Bottle', 25000, 'https://www.chiccousa.com/dw/image/v2/BLNH_PRD/on/demandware.static/-/Sites-chicco_catalog/default/dw39f8a5f8/images/products/feeding/duo-bottle/chicco-duo-bottle-5oz-single.jpg?sw=660')">Add to Cart</button>
                     </div>
                 </div>
-                 <div class="product-card">
-                    <img src="jumper.jpg" alt="Onesie" class="product-img">
+                
+                <div class="product-card" data-category="feeding">
+                    <img src="https://www.chiccousa.com/on/demandware.static/-/Sites-chicco_catalog/default/dw2d47a2ec/images/products/feeding/sterilizers/chicco-digital-bottle-warmer-sterilizer.jpg" alt="Warmer" class="product-img">
                     <div class="product-info">
-                        <h3>Jumper</h3>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(4, 'Organic Onesie', 18000, 'https://www.bellacanvas.com/bella/product/hires/100B00.jpg')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="maroon.jpg" alt="Onesie" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Boot Cuts</h3>
-                        <p>4yrs</p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(4, 'Organic Onesie', 18000, 'https://www.bellacanvas.com/bella/product/hires/100B00.jpg')">Add to Cart</button>
-                    </div>
-                 </div>
-                    <div class="product-card">
-                        <img src = "vests.jpg" alt= "vests" class="product-img">
-                    <div class="product-info">
-                        <h3>Vests</h3>
-                        <p> 2yrs - 12yrs</p>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="bluegirl.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Fancy Top</h3>
-                        <p> 6m - 4yrs</p>
-                        <p class="price">UGX 15,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="6m.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>T-shirt</h3>
-                        <p> 6m - 2yrs</p>
-                        <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="bike.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Boys T- shirt</h3>
-                        <p> 4yrs - 14yrs</p>
-                        <p class="price">UGX 20,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="pink.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Fancy Top</h3>
-                        <p> 6m - 4yrs</p>
-                        <p class="price">UGX 15,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="purple.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls boot cuts</h3>
-                        <p> 0m - 4yrs</p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <h3>Bottle Warmer</h3>
+                        <p class="price">UGX 45,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(3, 'Bottle Warmer', 45000, 'https://www.chiccousa.com/on/demandware.static/-/Sites-chicco_catalog/default/dw2d47a2ec/images/products/feeding/sterilizers/chicco-digital-bottle-warmer-sterilizer.jpg')">Add to Cart</button>
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <img src="black7.jpg" alt="Monitor" class="product-img">
+                <!-- CLOTHING CATEGORY PRODUCTS -->
+                <!-- Boys Section -->
+                <div class="product-card" data-category="clothing">
+                    <img src="2pieceset.jpg" alt="Boys 2 piece set" class="product-img">
                     <div class="product-info">
-                        <h3>Black short</h3>
-                        <p> 3m & 3yrs</p>
-                        <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(8, 'Baby Monitor', 120000, 'https://www.multivu.com/players/English/8377251-new-johnsons-improved-baby-products/image/JohnsonHero_1533082650034-null-HR.jpg')">Add to Cart</button>
+                        <h3>Boys 2 piece set</h3>
+                        <p>2yrs - 12yrs</p>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(1, 'Boys 2 piece set', 25000, '2pieceset.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                 <div class="product-card">
-                    <img src="flower.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="boyslinen.jpg" alt="Boys Linen" class="product-img">
                     <div class="product-info">
-                        <h3>Girls boot cuts</h3>
-                        <p> 0m - 4yrs</p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <h3>Boys Linen</h3>
+                        <p>6m long</p>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(3, 'Boys Linen', 40000, 'boyslinen.jpg')">Add to Cart</button>
                     </div>
-                 </div>
-                <div class="product-card">
-                    <img src="maroon1.jpg" alt="Pump" class="product-img">
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="fancy1.jpg" alt="Boys Fancy 2piece sets" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys Fancy 2piece sets</h3>
+                        <p>2yrs - 6yrs</p>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(3, 'Boys Fancy 2piece sets', 45000, 'fancy1.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="3piece.jpg" alt="Boys 3set pieces" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys 3set pieces</h3>
+                        <p>6yrs</p>
+                        <p class="price">UGX 60,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(3, 'Boys 3set pieces', 60000, '3piece.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="2piece.jpg" alt="Boys 2set pieces Cotton" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys 2set pieces Cotton</h3>
+                        <p>2yrs - 10yrs</p>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Boys 2set pieces Cotton', 40000, '2piece.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="red.jpg" alt="Boys 2set pieces cotton" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys 2set pieces cotton</h3>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Boys 2set pieces cotton', 40000, 'red.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="fancy2.jpg" alt="boys Fancy clothes" class="product-img">
+                    <div class="product-info">
+                        <h3>boys Fancy clothes</h3>
+                        <p>2yrs - 6yrs</p>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'boys Fancy clothes', 40000, 'fancy2.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="smile.jpg" alt="Boys Fancy 2piece sets" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys Fancy 2piece sets</h3>
+                        <p>2yrs - 6yrs</p>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Boys Fancy 2piece sets', 40000, 'smile.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="army.jpg" alt="Army Short" class="product-img">
+                    <div class="product-info">
+                        <h3>Army Short</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Army Short', 10000, 'army.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="short.jpg" alt="Shorts" class="product-img">
+                    <div class="product-info">
+                        <h3>Shorts</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Shorts', 10000, 'short.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="army1.jpg" alt="Boys Army Short" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys Army Short</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Boys Army Short', 10000, 'army1.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="white2.jpg" alt="Boys Fancy 2set pieces" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys Fancy 2set pieces</h3>
+                        <p>2yrs - 6yrs</p>
+                        <p class="price">UGX 40,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Boys Fancy 2set pieces', 40000, 'white2.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="bike.jpg" alt="Boys T- shirt" class="product-img">
+                    <div class="product-info">
+                        <h3>Boys T- shirt</h3>
+                        <p>4yrs - 14yrs</p>
+                        <p class="price">UGX 20,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Boys T- shirt', 20000, 'bike.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="6m.jpg" alt="T-shirt" class="product-img">
                     <div class="product-info">
                         <h3>T-shirt</h3>
-                        <p> 6m - 2yrs</p>
+                        <p>6m - 2yrs</p>
                         <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirt', 10000, '6m.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <img src="pink2.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="ny.jpg" alt="T-shirts" class="product-img">
+                    <div class="product-info">
+                        <h3>T-shirts</h3>
+                        <p>6m - 2yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirts', 10000, 'ny.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="white.jpg" alt="T-shirts" class="product-img">
+                    <div class="product-info">
+                        <h3>T-shirts</h3>
+                        <p>6 - 2yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirts', 10000, 'white.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="orange2.jpg" alt="T-shirt" class="product-img">
                     <div class="product-info">
                         <h3>T-shirt</h3>
-                        <p> 6m - 2yrs</p>
+                        <p>6m - 2yrs</p>
                         <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirt', 10000, 'orange2.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <img src="colours.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="maroon1.jpg" alt="T-shirt" class="product-img">
                     <div class="product-info">
-                        <h3>Girl Boot Cut</h3>
-                        <p> 0m - 4yrs</p>
-                        <p class="price">UGX 50,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                                                </div>
-        <div class="product-card">
-                    <img src="grey2.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Boot Cut</h3>
-                        <p> 0m - 4yrs</p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="redwhite.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Boot Cut</h3>
-                        <p> 0m - 4yrs</p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="brown.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Short</h3>
-                        <p> 3m - 3yrs</p>
+                        <h3>T-shirt</h3>
+                        <p>6m - 2yrs</p>
                         <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirt', 10000, 'maroon1.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                 <div class="product-card">
-                    <img src="green.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="pink2.jpg" alt="T-shirt" class="product-img">
                     <div class="product-info">
-                        <h3>Sweater</h3>
-                        <p></p>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="pink2.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Sweater</h3>
-                        <p> </p>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="maroon3.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Short</h3>
-                        <p> 3m - 3yrs</p>
+                        <h3>T-shirt</h3>
+                        <p>6m - 2yrs</p>
                         <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirt', 10000, 'pink2.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                 <div class="product-card">
-                    <img src="sweaters/pink3.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Pink SWeater</h3>
-                        <p></p>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="T-shirts/white3.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="T-shirts/white3.jpg" alt="T-shirt" class="product-img">
                     <div class="product-info">
                         <h3>T-shirt</h3>
                         <p>4yrs - 14yrs</p>
                         <p class="price">UGX 20,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirt', 20000, 'T-shirts/white3.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                 <div class="product-card">
-                    <img src="Jumpers/jumper1.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Jumper</h3>
-                        <p></p>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                 <div class="product-card">
-                    <img src="Bootcuts/cut2.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Boot Cut</h3>
-                        <p></p>
-                        <p class="price">UGX 5,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                 </div>
-                <div class="product-card">
-                    <img src="sweaters/marron5.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Sweater</h3>
-                        <p></p>
-                        <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="Dresses/dress1.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Dress</h3>
-                        <p>6m - 4yrs</p>
-                        <p class="price">UGX 15,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="T-shirts/shirt1.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="T-shirts/shirt1.jpg" alt="Girls Dress" class="product-img">
                     <div class="product-info">
                         <h3>Girls Dress</h3>
                         <p>6m - 2yrs</p>
                         <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Dress', 10000, 'T-shirts/shirt1.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <img src="Dresses/pinkdress.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Girls Dress</h3>
-                        <p>6m - 4yrs</p>
-                        <p class="price">UGX 15,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="Shorts/brownshort.jpg" alt="Pump" class="product-img">
-                    <div class="product-info">
-                        <h3>Short</h3>
-                        <p>3m - 3yrs</p>
-                        <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="T-shirts/navyblue.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="T-shirts/navyblue.jpg" alt="T-shirt" class="product-img">
                     <div class="product-info">
                         <h3>T-shirt</h3>
                         <p>6m - 2yrs</p>
                         <p class="price">UGX 10,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'T-shirt', 10000, 'T-shirts/navyblue.jpg')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <img src="Jumpers/redjumper.jpg" alt="Pump" class="product-img">
+
+                <div class="product-card" data-category="clothing">
+                    <img src="t-shirt.jpg" alt="T-shirts" class="product-img">
+                    <div class="product-info">
+                        <h3>T-shirts</h3>
+                        <p>6m & 2yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(6, 'T-shirts', 10000, 't-shirt.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Girls Section -->
+                <div class="product-card" data-category="clothing">
+                    <img src="cut.jpg" alt="Girls boot cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls boot cuts</h3>
+                        <p>4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(2, 'Girls boot cuts', 5000, 'cut.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="pijama07.jpg" alt="Girls Pijama" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Pijama</h3>
+                        <p>1yr - 4yrs</p>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Girls Pijama', 25000, 'pijama07.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="pijama7.jpg" alt="Girls Pijama" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Pijama</h3>
+                        <p>1yr - 4yrs</p>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Pijama', 25000, 'pijama7.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="tops.jpg" alt="Girls Fancy Top" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Fancy Top</h3>
+                        <p>6m & 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Girls Fancy Top', 15000, 'tops.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="best.jpg" alt="Creamy Fancy Top girls" class="product-img">
+                    <div class="product-info">
+                        <h3>Creamy Fancy Top girls</h3>
+                        <p>6m and 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Creamy Fancy Top girls', 15000, 'best.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="yellow.jpg" alt="Yellow girls fancy top" class="product-img">
+                    <div class="product-info">
+                        <h3>Yellow girls fancy top</h3>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Yellow girls fancy top', 15000, 'yellow.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="boot.jpg" alt="Girls boot cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls boot cuts</h3>
+                        <p>4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Girls boot cuts', 5000, 'boot.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="sweater.jpg" alt="Pink sweater" class="product-img">
+                    <div class="product-info">
+                        <h3>Pink sweater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Pink sweater', 25000, 'sweater.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="jumper.jpg" alt="Jumper" class="product-img">
+                    <div class="product-info">
+                        <h3>Jumper</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Jumper', 25000, 'jumper.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="maroon.jpg" alt="Girls Boot Cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot Cuts</h3>
+                        <p>4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(4, 'Girls Boot Cuts', 5000, 'maroon.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="bluefancy.jpg" alt="Blue girls Fancy Top" class="product-img">
+                    <div class="product-info">
+                        <h3>Blue girls Fancy Top</h3>
+                        <p>4m & 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(5, 'Blue girls Fancy Top', 15000, 'bluefancy.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="pink.jpg" alt="Girls Fancy Top" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Fancy Top</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Fancy Top', 15000, 'pink.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="black20.jpg" alt="Girls Fancy Top (black)" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Fancy Top (black)</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Fancy Top (black)', 15000, 'black20.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="fancytop1.jpg" alt="Girls Fancy Top" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Fancy Top</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Fancy Top', 15000, 'fancytop1.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="orange.jpg" alt="Girls Fancy Top" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Fancy Top</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Fancy Top', 15000, 'orange.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="bluegirl.jpg" alt="Girls Fancy Top" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Fancy Top</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Fancy Top', 15000, 'bluegirl.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="purple.jpg" alt="Girls boot cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls boot cuts</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls boot cuts', 5000, 'purple.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="black7.jpg" alt="Black short" class="product-img">
+                    <div class="product-info">
+                        <h3>Black short</h3>
+                        <p>3m & 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(8, 'Black short', 10000, 'black7.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="flower.jpg" alt="Girls boot cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls boot cuts</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls boot cuts', 5000, 'flower.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="heart.jpg" alt="Girls boot cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls boot cuts</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls boot cuts', 5000, 'heart.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="leopard.jpg" alt="Girls Boot Cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot Cut</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot Cut', 5000, 'leopard.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="colours.jpg" alt="Girl Boot Cuts" class="product-img">
+                    <div class="product-info">
+                        <h3>Girl Boot Cuts</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 50,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girl Boot Cuts', 50000, 'colours.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="grey2.jp" alt="Girls Boot Cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot Cut</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot Cut', 5000, 'grey2.jp')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="redwhite.jpg" alt="Girls Boot Cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot Cut</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot Cut', 5000, 'redwhite.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Bootcuts/cut2.jpg" alt="Girls Boot Cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot Cut</h3>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot Cut', 5000, 'Bootcuts/cut2.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Bootcuts/cut4.jpg" alt="Girls Boot cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot cut</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot cut', 5000, 'Bootcuts/cut4.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Bootcuts/leo1.jpg" alt="Girls Boot cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot cut</h3>
+                        <p>0m - 4yrs</p>
+                        <p class="price">UGX 5,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot cut', 5000, 'Bootcuts/leo1.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Sweaters & Jumpers -->
+                <div class="product-card" data-category="clothing">
+                    <img src="grey.jpg" alt="Sweater" class="product-img">
+                    <div class="product-info">
+                        <h3>Sweater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Sweater', 25000, 'grey.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="red2.jpg" alt="Red Sweater" class="product-img">
+                    <div class="product-info">
+                        <h3>Red Sweater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Red Sweater', 25000, 'red2.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="green.jpg" alt="Sweater" class="product-img">
+                    <div class="product-info">
+                        <h3>Sweater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Sweater', 25000, 'green.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="sweaters/pink3.jpg" alt="Girls Pink SWeater" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Pink SWeater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Pink SWeater', 25000, 'sweaters/pink3.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="sweaters/black4.jpg" alt="Sweater" class="product-img">
+                    <div class="product-info">
+                        <h3>Sweater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Sweater', 25000, 'sweaters/black4.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="sweaters/marron5.jpg" alt="Sweater" class="product-img">
+                    <div class="product-info">
+                        <h3>Sweater</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Sweater', 25000, 'sweaters/marron5.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Jumpers/jumper1.jpg" alt="Jumper" class="product-img">
+                    <div class="product-info">
+                        <h3>Jumper</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Jumper', 25000, 'Jumpers/jumper1.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Jumpers/red3.jpg" alt="Jumper" class="product-img">
+                    <div class="product-info">
+                        <h3>Jumper</h3>
+                        <p class="price">UGX 25,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Jumper', 25000, 'Jumpers/red3.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Jumpers/redjumper.jpg" alt="Red Jumper" class="product-img">
                     <div class="product-info">
                         <h3>Red Jumper</h3>
-                        <p></p>
                         <p class="price">UGX 25,000</p>
-                        <button class="btn btn-primary" onclick="addToCart(7, 'Breast Pump', 85000, 'https://www.heromea.com/baby/sites/mea.baby/files/styles/600x412_product_detail/public/NS_1_400_Update_8_2021-3.png?itok=xG9qh179')">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Red Jumper', 25000, 'Jumpers/redjumper.jpg')">Add to Cart</button>
                     </div>
                 </div>
+
+                <!-- Dresses -->
+                <div class="product-card" data-category="clothing">
+                    <img src="Dresses/maroon4.jpg" alt="Girls Dress" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Dress</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Dress', 15000, 'Dresses/maroon4.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Dresses/maroon3.jpg" alt="Girls Dress" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Dress</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Dress', 15000, 'Dresses/maroon3.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Dresses/dress1.jpg" alt="Girls Dress" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Dress</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Dress', 15000, 'Dresses/dress1.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Dresses/pinkdress.jpg" alt="Girls Dress" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Dress</h3>
+                        <p>6m - 4yrs</p>
+                        <p class="price">UGX 15,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Dress', 15000, 'Dresses/pinkdress.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Shorts -->
+                <div class="product-card" data-category="clothing">
+                    <img src="short4.jpg" alt="Shorts" class="product-img">
+                    <div class="product-info">
+                        <h3>Shorts</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Shorts', 10000, 'short4.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="brown.jpg" alt="Short" class="product-img">
+                    <div class="product-info">
+                        <h3>Short</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Short', 10000, 'brown.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="maroon3.jpg" alt="Short" class="product-img">
+                    <div class="product-info">
+                        <h3>Short</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Short', 10000, 'maroon3.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Shorts/brownshort.jpg" alt="Short" class="product-img">
+                    <div class="product-info">
+                        <h3>Short</h3>
+                        <p>3m - 3yrs</p>
+                        <p class="price">UGX 10,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Short', 10000, 'Shorts/brownshort.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Vests -->
+                <div class="product-card" data-category="clothing">
+                    <img src="vests.jpg" alt="Vests" class="product-img">
+                    <div class="product-info">
+                        <h3>Vests</h3>
+                        <p>2yrs - 12yrs</p>
+                        <p class="price">UGX 20,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Vests', 20000, 'vests.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clothing">
+                    <img src="Vests/boysvests.jpg" alt="Girls Boot cut" class="product-img">
+                    <div class="product-info">
+                        <h3>Girls Boot cut</h3>
+                        <p>2yrs - 12yrs</p>
+                        <p class="price">UGX 20,000</p>
+                        <button class="btn btn-primary" onclick="addToCart(7, 'Girls Boot cut', 20000, 'Vests/boysvests.jpg')">Add to Cart</button>
+                    </div>
+                </div>
+
             </div>
-        </div>
         </div>
     </section>
 
@@ -420,5 +851,32 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        function filterProducts(category, btnElement) {
+            // Update button states
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            btnElement.classList.add('active');
+            
+            // Filter products
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Update title
+            const titles = {
+                'all': '<span class="text-lemon">All</span> Products',
+                'feeding': '<span class="text-lemon">Feeding</span> Essentials',
+                'clothing': '<span class="text-lemon">Clothing</span> Collection'
+            };
+            document.getElementById('categoryDisplayTitle').innerHTML = '<h2>' + titles[category] + '</h2>';
+        }
+    </script>
 </body>
 </html>
